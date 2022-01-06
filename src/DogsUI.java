@@ -21,7 +21,7 @@ public class DogsUI {
     }
 
     private void startUp() {
-        System.out.println("Välkommen till DogDaycare's användargränssnitt!");
+        System.out.println("Välkommen till DogRescue's användargränssnitt!");
         System.out.println("");
         printAvailableCommands();
     }
@@ -56,43 +56,45 @@ public class DogsUI {
     private void handleCommand(String command) {
         switch (command) {
             case "at", "add tests", "ltt", "lagg till tester":
-                
+                // Call method which creates and adds dogs and owners for testing.
+                // Maybe borrow from jUnit test cases.
                 break;
             
             case "rnd", "register new dog", "rnh", "registrera ny hund":
                 // Call method(s).
+                // From AssignmentSevenPointOne. (uses 6.4)
                 break;
         
             case "ld", "list dogs", "lh", "lista hundar":
-
+                // From AssignmentSevenPointSix & AssignmentEightPointFour. (uses 7.2 & 8.3)
                 break;
 
             case "ia", "increase age", "oa", "oka alder":
-
+                // From AssignmentSevenPointFour. (uses 7.3)
                 break;
 
             case "rd", "remove dog", "tbh", "ta bort hund":
-
+                // From AssignmentEightPointEight. (uses 7.3 & 8.3)
                 break;
 
             case "rno", "register new owner", "rna", "registrera ny agare":
-
+                // From AssignmentEightPointOne.
                 break;
 
             case "gd", "give dog", "gbh", "ge bort hund": 
-
+                // From AssignmentEightPointThree.
                 break;
 
             case "lo", "list owners", "la", "lista agare":
-
+                // From AssignmentEightPointFour. (uses 7.2 & 8.3)
                 break;
 
             case "rod", "remove owned dog", "tbhfa", "ta bort hund fran agare":
-
+                // From AssignmentEightPointSix. (uses 7.2, 8.3 & 8.4)
                 break;
 
             case "ro", "remove owner", "tba", "ta bort agare":
-
+                // From AssignmentEightPointSeven. (uses 8.3)
                 break;
 
             case "e", "exit", "a", "avsluta":
