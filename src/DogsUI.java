@@ -8,15 +8,15 @@ import java.util.Collections;
 public class DogsUI {
     //#region Test dogs and owners
     // Shamelesssly borrowed Dogs from AssignmentEightPointEightTest.java
-    private final Dog BELLA = new Dog("Bella", "Labrador", 3, 12);
-	private final Dog RATATA = new Dog("Ratata", "Tax", 15, 7);
-	private final Dog DORIS = new Dog("Doris", "Cocker spaniel", 5, 7);
-	private final Dog LASSIE = new Dog("Lassie", "Mops", 11, 11);
-	private final Dog CHARLIE = new Dog("Charlie", "Puli", 9, 12);
-    private final Dog[] PREPARED_DOGS = { BELLA, RATATA, DORIS, LASSIE, CHARLIE };
-    private final Owner ERIK = new Owner("Erik");
-    private final Owner RONJA = new Owner("Ronja");
-    private final Owner[] PREPARED_OWNERS = {ERIK, RONJA};
+    private static final Dog BELLA = new Dog("Bella", "Labrador", 3, 12);
+	private static final Dog RATATA = new Dog("Ratata", "Tax", 15, 7);
+	private static final Dog DORIS = new Dog("Doris", "Cocker spaniel", 5, 7);
+	private static final Dog LASSIE = new Dog("Lassie", "Mops", 11, 11);
+	private static final Dog CHARLIE = new Dog("Charlie", "Puli", 9, 12);
+    private static final Dog[] PREPARED_DOGS = { BELLA, RATATA, DORIS, LASSIE, CHARLIE };
+    private static final Owner ERIK = new Owner("Erik");
+    private static final Owner RONJA = new Owner("Ronja");
+    private static final Owner[] PREPARED_OWNERS = {ERIK, RONJA};
     //#endregion
     //#region Instance Variables
     private Reader reader = new Reader();
@@ -108,6 +108,83 @@ public class DogsUI {
      */
     private void handleCommand(String command) {
         switch (command) {
+            //#region Optional case structure for older java versions (including VPL)
+            // case "at": 
+            // case "add tests": 
+            // case "ltt": 
+            // case "lagg till tester":
+            //     addTestsCommand();
+            //     break;
+            
+            // case "rnd": 
+            // case "register new dog":
+            // case "rnh": 
+            // case "registrera ny hund":
+            //     dogs.add(createDog());
+            //     break;
+        
+            // case "ld": 
+            // case "list dogs": 
+            // case "lh":
+            // case "lista hundar":
+            //     listDogsCommand();
+            //     break;
+
+            // case "ia": 
+            // case "increase age": 
+            // case "oa":
+            // case "oka alder":
+            //     increaseAge();
+            //     break;
+
+            // case "rd": 
+            // case "remove dog": 
+            // case "tbh":
+            // case "ta bort hund":
+            //     removeDog();
+            //     break;
+
+            // case "rno": 
+            // case "register new owner": 
+            // case "rna": 
+            // case "registrera ny agare":
+            //     addOwner();
+            //     break;
+
+            // case "gd": 
+            // case "give dog":
+            // case "gbh":
+            // case "ge bort hund": 
+            //     addDogToOwner();
+            //     break;
+
+            // case "lo": 
+            // case "list owners": 
+            // case "la": 
+            // case "lista agare":
+            //     listOwnersAndDogs();
+            //     break;
+
+            // case "rod": 
+            // case "remove owned dog": 
+            // case "tbhfa": 
+            // case "ta bort hund fran agare":
+            //     removeDogFromOwner();
+            //     break;
+
+            // case "ro": 
+            // case "remove owner": 
+            // case "tba": 
+            // case "ta bort agare":
+            //     removeOwner();
+            //     break;
+
+            // case "e": 
+            // case "exit": 
+            // case "a": 
+            // case "avsluta":
+            //     break;
+            //#endregion
             case "at", "add tests", "ltt", "lagg till tester":
                 addTestsCommand();
                 break;
