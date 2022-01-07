@@ -116,7 +116,7 @@ public class DogsUI {
                 break;
 
             case "ro", "remove owner", "tba", "ta bort agare":
-                // From AssignmentEightPointSeven.
+                removeOwner();
                 break;
 
             case "e", "exit", "a", "avsluta":
@@ -678,6 +678,7 @@ public class DogsUI {
     //#endregion
 
     private void terminate() {
-        // outro text
+        System.out.println("Tack för att du använde DogRescue's användargränssnitt!");
+        System.out.println("Hoppas vi ses igen!");
     }
 }
