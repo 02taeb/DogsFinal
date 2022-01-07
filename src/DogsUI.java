@@ -38,18 +38,27 @@ public class DogsUI {
         dogsUI.run();
     }
 
+    /**
+     * Runs the program, not in main so everything can be non-static.
+     */
     private void run() {
         startUp();
         commandLoop();
         terminate();
     }
 
+    /**
+     * Prints welcome message and calls printAvailableCommands().
+     */
     private void startUp() {
         System.out.println("Välkommen till DogRescue's användargränssnitt!");
         System.out.println("");
         printAvailableCommands();
     }
 
+    /**
+     * Prints the avaiable commands
+     */
     private void printAvailableCommands() {
         System.out.println("Följande kommandon finns tillgängliga, ange ett kommando med dess hela namn eller förkortningen inom parentesen:");
         System.out.println("Lagg till tester (ltt)");
@@ -65,18 +74,38 @@ public class DogsUI {
         System.out.println("Avsluta (a)");
     }
 
+    /**
+     * Loops the readCommand and handleComman sequence until user chooses to exit.
+     */
     private void commandLoop() {
         String command;
         do {
+            resetVariableValues();
             command = readCommand();
             handleCommand(command);
         } while (!command.equals("exit") && !command.equals("e") && !command.equals("avsluta") && !command.equals("a"));
     }
 
+    /**
+     * Resets instance variables so they do not have incorrect values when running multiple commands in one sitting.
+     */
+    private void resetVariableValues() {
+        runDog = true;
+        runOwner = true;
+    }
+
+    /**
+     * Reads command to execute.
+     * @return String command.
+     */
     private String readCommand() {
         return reader.readString("Ange kommando", false).toLowerCase();
     }
 
+    /**
+     * Calls command.
+     * @param command String command to call.
+     */
     private void handleCommand(String command) {
         switch (command) {
             case "at", "add tests", "ltt", "lagg till tester":
@@ -129,6 +158,9 @@ public class DogsUI {
         }    
     }
 
+    /**
+     * Add pre-prepared test dogs and owners to ArrayList<Dog> dogs and ArrayList<Owner> owners.
+     */
     private void addTestsCommand() {
         for (Dog dog : PREPARED_DOGS) {
             dogs.add(dog);
@@ -157,7 +189,7 @@ public class DogsUI {
         int age = enterAge();
         int weight = enterWeight();
         Dog dog = new Dog(name, breed, age, weight);
-        System.out.println(name + "är nu tillagd i systemet!");
+        System.out.println(name + " är nu tillagd i systemet!");
         return dog;
     }
 
@@ -350,20 +382,6 @@ public class DogsUI {
 
         return counter;
     }
-
-    /**
-     * Returns all owners and the name of their dogs.
-     */
-    // @UnderTest(id = "U8.4")
-    private void listOwnersAndDogs() {
-        if (owners.size() == 0) {
-            System.out.println("Error: No owners registered.");
-        }
-        for (Owner owner : owners) {
-            System.out.println(owner.toString());
-            owner.listOwnedDogs();
-        }
-    }
     //#endregion
 
     //#region Increase age command
@@ -423,6 +441,8 @@ public class DogsUI {
         String name = reader.readString("Namn", true);
 
         owners.add(new Owner(name));
+
+        System.out.println(name + " är nu tillagd i registret.");
     }
     //#endregion
 
@@ -431,7 +451,19 @@ public class DogsUI {
     //#endregion
 
     //#region List owners command
-    // See listOwnersAndDogs() in Used by several commands region
+    /**
+     * Returns all owners and the name of their dogs.
+     */
+    // @UnderTest(id = "U8.4")
+    private void listOwnersAndDogs() {
+        if (owners.size() == 0) {
+            System.out.println("Error: No owners registered.");
+        }
+        for (Owner owner : owners) {
+            System.out.println(owner.toString());
+            owner.listOwnedDogs();
+        }
+    }
     //#endregion
 
     //#region Remove owned dog command
@@ -470,7 +502,7 @@ public class DogsUI {
             for (int i = 0; i < owners.size(); i++) {
                 if (ownerName.equalsIgnoreCase(owners.get(i).getName())) {
                     removeOwnedDogs(i);
-                    System.out.printf("%s är nu borttagen från systemet.", owners.get(i).getName());
+                    System.out.printf("%s är nu borttagen från systemet.%n", owners.get(i).getName());
                     owners.remove(i);
                     return;
                 }
@@ -585,6 +617,7 @@ public class DogsUI {
             System.out.println("Error: Operation Failed. Please see earlier error messages.");
         } else if (!owner.hasDog(dog) && !dog.isOwned()) {
             owner.addDogToOwner(dog);
+            System.out.println(owner + " äger nu " + dog);
         } else {
             System.out.println("Error: This dog is already owned by this owner.");
         }
@@ -677,6 +710,9 @@ public class DogsUI {
     }
     //#endregion
 
+    /**
+     * Prints parting messages.
+     */
     private void terminate() {
         System.out.println("Tack för att du använde DogRescue's användargränssnitt!");
         System.out.println("Hoppas vi ses igen!");

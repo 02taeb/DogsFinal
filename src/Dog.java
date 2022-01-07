@@ -178,6 +178,7 @@ public class Dog {
         if (isOwned) {
             isOwned = false;
             owner.removeDogFromOwner(this);
+            System.out.println(name + " har nu tagits bort från " + owner);
             owner = null;
             return true;
         } else {

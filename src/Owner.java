@@ -59,7 +59,7 @@ public class Owner {
      */
     public void listOwnedDogs() {
         for (Dog dog : ownedDogs) {
-            System.out.println(dog.toString());
+            System.out.println("*" + dog.toString());
         }
     }
 
