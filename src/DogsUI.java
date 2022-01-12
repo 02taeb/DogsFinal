@@ -342,10 +342,7 @@ public class DogsUI {
     private boolean collectionsSwapTwoDogs(int indexFirstDog, int indexSecondDog) {
         if (indexFirstDog != indexSecondDog) {
             Collections.swap(dogs, indexFirstDog, indexSecondDog);
-
-            // Indicates if swap happened.
-            // This because swap should not happen and be counted by selectionSort() if it
-            // just swaps a dog for itself.
+            
             return true;
         }
 
