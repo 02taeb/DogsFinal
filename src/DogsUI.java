@@ -24,7 +24,6 @@ public class DogsUI {
     private ArrayList<Dog> dogs = new ArrayList<>();
     // @UnderTest(id = "owners")
     private ArrayList<Owner> owners = new ArrayList<>();
-    private Dog nullDog;
     private String nameOfDog;
     private String nameOfOwner;
     private Owner owner;
@@ -619,7 +618,7 @@ public class DogsUI {
      */
     // @UnderTest(id = "U7.3")
     private Dog findDog(String dogName) {
-        nullDog = null;
+        Dog nullDog = null;
 
         for (Dog dog : dogs) {
             if (dog.getName().equalsIgnoreCase(dogName.trim())) {
