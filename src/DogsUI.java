@@ -8,15 +8,15 @@ import java.util.Collections;
 public class DogsUI {
     //#region Test dogs and owners
     // Shamelesssly borrowed Dogs from AssignmentEightPointEightTest.java
-    private static final Dog BELLA = new Dog("Bella", "Labrador", 3, 12);
-	private static final Dog RATATA = new Dog("Ratata", "Tax", 15, 7);
-	private static final Dog DORIS = new Dog("Doris", "Cocker spaniel", 5, 7);
-	private static final Dog LASSIE = new Dog("Lassie", "Mops", 11, 11);
-	private static final Dog CHARLIE = new Dog("Charlie", "Puli", 9, 12);
-    private static final Dog[] PREPARED_DOGS = { BELLA, RATATA, DORIS, LASSIE, CHARLIE };
-    private static final Owner ERIK = new Owner("Erik");
-    private static final Owner RONJA = new Owner("Ronja");
-    private static final Owner[] PREPARED_OWNERS = {ERIK, RONJA};
+    // private static final Dog BELLA = new Dog("Bella", "Labrador", 3, 12);
+	// private static final Dog RATATA = new Dog("Ratata", "Tax", 15, 7);
+	// private static final Dog DORIS = new Dog("Doris", "Cocker spaniel", 5, 7);
+	// private static final Dog LASSIE = new Dog("Lassie", "Mops", 11, 11);
+	// private static final Dog CHARLIE = new Dog("Charlie", "Puli", 9, 12);
+    // private static final Dog[] PREPARED_DOGS = { BELLA, RATATA, DORIS, LASSIE, CHARLIE };
+    // private static final Owner ERIK = new Owner("Erik");
+    // private static final Owner RONJA = new Owner("Ronja");
+    // private static final Owner[] PREPARED_OWNERS = {ERIK, RONJA};
     //#endregion
     //#region Instance Variables
     private Reader reader = new Reader();
@@ -60,7 +60,7 @@ public class DogsUI {
      */
     private void printAvailableCommands() {
         System.out.println("Följande kommandon finns tillgängliga, ange ett kommando med dess hela namn eller förkortningen inom parentesen:");
-        System.out.println("Lagg till tester (ltt)");
+        // System.out.println("Lagg till tester (ltt)");
         System.out.println("Registrera ny hund (rnh)");
         System.out.println("Lista hundar (lh)");
         System.out.println("Oka alder (oa)");
@@ -78,11 +78,12 @@ public class DogsUI {
      */
     private void commandLoop() {
         String command;
+        boolean exit = false;
         do {
             resetVariableValues();
             command = readCommand();
-            handleCommand(command);
-        } while (!command.equals("exit") && !command.equals("e") && !command.equals("avsluta") && !command.equals("a"));
+            exit = handleCommand(command);
+        } while (!exit);
     }
 
     /**
@@ -104,8 +105,9 @@ public class DogsUI {
     /**
      * Calls command.
      * @param command String command to call.
+     * @return boolean true to exit, false to run next iteration.
      */
-    private void handleCommand(String command) {
+    private boolean handleCommand(String command) {
         switch (command) {
             //#region Optional case structure for older java versions (including VPL)
             // case "at": 
@@ -184,9 +186,9 @@ public class DogsUI {
             // case "avsluta":
             //     break;
             //#endregion
-            case "at", "add tests", "ltt", "lagg till tester":
-                addTestsCommand();
-                break;
+            // case "at", "add tests", "ltt", "lagg till tester":
+            //     addTestsCommand();
+            //     break;
             
             case "rnd", "register new dog", "rnh", "registrera ny hund":
                 dogs.add(createDog());
@@ -225,32 +227,33 @@ public class DogsUI {
                 break;
 
             case "e", "exit", "a", "avsluta":
-                break;
+                return true;
 
             default:
                 System.out.println("Error: Unknown command");
                 printAvailableCommands();
                 break;
-        }    
+        }
+        return false;    
     }
 
     /**
      * Add pre-prepared test dogs and owners to ArrayList<Dog> dogs and ArrayList<Owner> owners.
      */
-    private void addTestsCommand() {
-        for (Dog dog : PREPARED_DOGS) {
-            dogs.add(dog);
-        }
-        for (Owner owner : PREPARED_OWNERS) {
-            owners.add(owner);
-        }
+    // private void addTestsCommand() {
+    //     for (Dog dog : PREPARED_DOGS) {
+    //         dogs.add(dog);
+    //     }
+    //     for (Owner owner : PREPARED_OWNERS) {
+    //         owners.add(owner);
+    //     }
 
-        ERIK.addDogToOwner(BELLA);
-        ERIK.addDogToOwner(RATATA);
-        RONJA.addDogToOwner(DORIS);
+    //     ERIK.addDogToOwner(BELLA);
+    //     ERIK.addDogToOwner(RATATA);
+    //     RONJA.addDogToOwner(DORIS);
 
-        System.out.println("Tests added.");
-    }
+    //     System.out.println("Tests added.");
+    // }
 
     //#region Register new dog Command
     /**
